@@ -1,15 +1,21 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.LinkedHashSet;
 public class Main{
    public static void main(String[] args) {
       Scanner in = new Scanner(System.in);
       System.out.print("Enter the String : ");
       String str = in.next();
       String[] arr = str.split("");
-      Arrays.sort(arr);
-      permuteApproachTwo(0, arr);
+      ArrayList<String> al = new ArrayList<>();
+      for(String e : arr){
+         al.add(e);
+      }
+      LinkedHashSet<ArrayList<String>> set = new LinkedHashSet<>();
+      permuteForDuplicateArray(0, al, set, al.size());
+      for(ArrayList<String> e : set){
+         System.out.println(e);
+      }
       // System.out.println(Arrays.toString(arr));
       // ArrayList<String> al = new ArrayList<>();
       // ArrayList<String> list = new ArrayList<>();
@@ -60,5 +66,24 @@ public class Main{
       String temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
+   }
+
+   static void permuteForDuplicateArray(int start , ArrayList<String> arr , LinkedHashSet<ArrayList<String>> list , int len){
+      if(start == len){
+         //System.out.println(arr);
+         list.add(new ArrayList<>(arr));
+         return;
+      }
+      for(int i = start ; i < len ; i++){
+         swap(i , start , arr);
+         permuteForDuplicateArray(start + 1, arr, list, len);
+         swap(i , start , arr);
+      }
+   }
+
+   static void swap(int i , int j , ArrayList<String> arr){
+      String temp = arr.get(i);
+      arr.set(i, arr.get(j));
+      arr.set(j , temp);
    }
 }
