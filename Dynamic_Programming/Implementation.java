@@ -27,4 +27,24 @@ public class Implementation{
       }
       System.out.println(arr[n][n]);
    }
+
+   public void canSum(){
+      Scanner in = new Scanner(System.in);
+      int n = in.nextInt();
+      int[] arr = new int[n];
+      for(int i = 0 ; i < n ; i++){
+         arr[i] = in.nextInt();
+      }
+      int targetSum = in.nextInt();
+      boolean[] res = new boolean[targetSum + 1];
+      res[0] = true;
+      for(int i = 0 ; i <= targetSum ; i++){
+         for(int j = 0 ; j < n ; j++){
+            if(res[i] && (i+arr[j]) <= targetSum){
+               res[(i+arr[j])] = true;
+            }
+         }
+      }
+      System.out.println(res[targetSum]);
+   }
 }
