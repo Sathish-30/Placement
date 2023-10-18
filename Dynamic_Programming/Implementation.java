@@ -47,4 +47,51 @@ public class Implementation{
       }
       System.out.println(res[targetSum]);
    }
+   public void antPath(){
+      Scanner in = new Scanner(System.in);
+      int n = in.nextInt();
+      int[][] antpath = new int[n+1][n+1];
+      int[][] intermediary = new int[n+1][n+1];
+      for(int i = 1 ; i <= n ; i++){
+         for(int j = 1 ; j <= n ; j++){
+            antpath[i][j] = in.nextInt();
+            intermediary[i][j] = 1;
+         }
+      }
+      intermediary[1][1] = 1;
+      for(int i = 1 ; i <= n ; i++){
+         for(int j = 1 ; j <= n ; j++){
+            // For Downward movement
+            if(i + 1 <= n){
+               if(antpath[i+1][j] - antpath[i][j] == 1){
+                  intermediary[i+1][j] = intermediary[i][j] + 1; 
+               }
+            }
+            // For rightward movement
+            if(j + 1 <= n){
+               if(antpath[i][j + 1] - antpath[i][j] == 1){
+                  intermediary[i][j + 1] = intermediary[i][j] + 1; 
+               }
+            }
+         }
+      }
+
+      for (int i = 1; i <= n; i++) {
+         for (int j = 1; j <= n; j++) {
+            System.out.print(findMax(intermediary[i][j] , i , j ,intermediary)+" ");
+         }
+         System.out.println();
+      }
+   }
+
+   public static int findMax(int curr , int row , int col ,int[][] mat){
+      for(int i = 1 ; i <= row ; i++){
+         for (int j = 1; j <= col; j++) {
+            if(mat[i][j] > curr){
+               curr = mat[i][j];
+            }
+         }
+      }
+      return curr;
+   }
 }

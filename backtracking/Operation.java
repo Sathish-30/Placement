@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Operation{
    // Where the maze can be go by Right and Down -> lexiographically from down to right
@@ -20,6 +21,22 @@ public class Operation{
             if(canSum(arr, sum) == true) return true;
          }
          return false;
+      }
+   }
+
+   public ArrayList<Integer> howSum(int[] arr , int sum){
+      if(sum == 0) return new ArrayList<>();
+      else if(sum < 0) return null;
+      else{
+         for(int e : arr){
+            sum -= e;
+            ArrayList<Integer> al = howSum(arr, sum);
+            if(al != null){
+               al.add(e);
+               return al;
+            }
+         }
+      return null;
       }
    }
 }

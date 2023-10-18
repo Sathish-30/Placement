@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Implementation{
@@ -11,7 +12,7 @@ public class Implementation{
       }
       int k = in.nextInt();
       Operation op = new Operation();
-      boolean res = op.canSum(arr , k);
+      ArrayList<Integer> res = op.howSum(arr , k);
       System.out.println(res);
    }
 }
