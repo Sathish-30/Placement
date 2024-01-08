@@ -13,7 +13,7 @@ public class Implementation {
         }
     }
     static void combinationSum(int target, int[] arr , int index , int len , ArrayList<Integer> al , int sum , ArrayList<ArrayList<Integer>> res){
-        if(sum == target) {
+        if(target == sum) {
             res.add(new ArrayList<>(al));
             return;
         }
@@ -22,9 +22,9 @@ public class Implementation {
         }
         sum += arr[index];
         al.add(arr[index]);
-        combinationSum(target , arr , index , len , al , sum, res);
-        sum -= arr[index];
+        combinationSum(target, arr, index , len, al, sum, res);
         al.removeLast();
-        combinationSum(target , arr , index + 1 , len , al , sum , res);
+        sum -= arr[index];
+        combinationSum(target , arr , index + 1 , len , al , sum, res);
     }
 }

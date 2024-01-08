@@ -8,4 +8,5 @@
   - Subsequence and combination Sum (Solved the following question with the take and not take approach)
 
 3 / 1 / 24
-  - Combination sum
+  - Combination sum 2
+
