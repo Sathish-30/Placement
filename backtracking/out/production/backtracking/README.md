@@ -10,3 +10,6 @@
 3 / 1 / 24
   - Combination sum 2
 
+9 / 1 / 24
+  - Permutation
+
